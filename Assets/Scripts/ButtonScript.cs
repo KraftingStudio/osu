@@ -4,7 +4,7 @@ public class ButtonScript : MonoBehaviour {
 
     public float DTime;     //time for the surrounding circle to dissapear
     private float timer;
-    public float[] levels;
+    public float[] levels;	//how accurate was the press of the button
     public Color color;     //circle's color
 
     private SpriteRenderer circ; //circle on the gray button
