@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d55af916d7b133488d021337e70cf69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DTime: 10
+  DTime: 2
   levels:
   - 0.8
   - 0.5

@@ -18,7 +18,7 @@ public class ButtonScript : MonoBehaviour {
     {
         circ = transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
         circGFX = transform.GetChild(1).GetComponent<CircleRenderer>();
-        step = 0.8f / (DTime * 60f);    //desired effect/(effect time * 60 frames per second (since it's in the Update))
+        step = 0.8f / (DTime * 60f);
     }
 
     void Initiate()

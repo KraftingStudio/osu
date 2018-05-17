@@ -33,7 +33,6 @@ public class ScoreManager : MonoBehaviour {
                 score += 300 * multi;
                 break;
         }
-        print("Score: " + score);
         //the multiplayer rises with each good click
         multi++;
         UpdateScoreText();
