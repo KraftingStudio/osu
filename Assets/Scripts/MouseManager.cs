@@ -6,6 +6,7 @@ public class MouseManager : MonoBehaviour {
     private Transform GFX;  //mouseGraphics
     private CircleCollider2D coll;  //collider on mouse pointer
     private bool isPressed = false;
+    private int frameCount;
 
 	
     void Awake()
@@ -28,16 +29,29 @@ public class MouseManager : MonoBehaviour {
         //if is clicked then release click (disable collider)
         if (isPressed)
         {
-            coll.enabled = false;
-            isPressed = false;
+            if(frameCount<3)
+            {
+                frameCount++;
+            }
+            else
+            {
+                coll.enabled = false;
+                isPressed = false;
+                frameCount = 0;
+            }
+
         }
 
         //click (enable collider)
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(key))
+        if(!isPressed)
         {
-            coll.enabled = true;
-            isPressed = true;
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(key))
+            {
+                coll.enabled = true;
+                isPressed = true;
+            }
         }
+        
         
 	}
 }

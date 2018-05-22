@@ -1,17 +1,26 @@
 ﻿using UnityEngine;
+using System;
 
-public class ButtonsData {
+   public class Button : IComparable<Button>
+{
+    public float tlTime;    //timeline time
+    public Vector2 position;   //button's position
 
-    
-    public class Button
+    public int CompareTo(Button btn)
     {
-        public Vector2 position;    //button's position
-        public float DTime;     //despawn time
-        public float tlTime;    //timeline time
-    }
+        if (btn == null)
+            return 1;
+        else
+            return tlTime.CompareTo(btn.tlTime);
+    } 
+}
 
+public class ButtonsData {  
+ 
     public Button[] buttons;
     public float mapTime;
-		
+    public string mapName;
+    public float DTime;     //button despawn time
+
 }
 

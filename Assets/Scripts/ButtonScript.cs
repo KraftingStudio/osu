@@ -50,6 +50,7 @@ public class ButtonScript : MonoBehaviour {
         }
         else
         {
+            SM.LoseMulti();
             gameObject.SetActive(false);
         }
     }

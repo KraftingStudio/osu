@@ -4,10 +4,12 @@ public class GameManager : MonoBehaviour {
 
     public TextUpdater TimerText;
 
+    ButtonsData data = new ButtonsData();
+
     public Transform ButtonsPool;
     private Transform[] ButtonObjects;
 
-    public float[] timeStamps;  //public for testing, needs sorting in the future
+    private float[] timeStamps;  //public for testing, needs sorting in the future
 
     public float tlTime; //timeline time
     private float timer;
@@ -30,6 +32,22 @@ public class GameManager : MonoBehaviour {
                 butt.gameObject.SetActive(false);
             }
         }
+
+        data.buttons = new Button[10];
+        for(int i=0; i<10; i++)
+        {
+            data.buttons[i] = new Button();
+            data.buttons[i].position = new Vector2(Random.Range(-10f, 10f), Random.Range(-5f, 5f));   //random for testing
+            data.DTime = 2f;
+            data.buttons[i].tlTime = i;
+        }
+
+        timeStamps = new float[data.buttons.Length];
+
+        for(int i=0; i<data.buttons.Length; i++)
+        {
+            timeStamps[i] = data.buttons[i].tlTime;
+        }
     }
 
     void Update()
@@ -41,7 +59,7 @@ public class GameManager : MonoBehaviour {
         }
 
         //temporary solution
-        if(it<size)
+        if(it<data.buttons.Length)
         {
             if (timer > timeStamps[it])
             {
@@ -58,7 +76,7 @@ public class GameManager : MonoBehaviour {
         {
             if (!butt.gameObject.activeSelf)
             {
-                return butt;    //hehe butt
+                return butt;
             }
         }
 
@@ -71,7 +89,9 @@ public class GameManager : MonoBehaviour {
         if(temp!=null)
         {
             //get the buttons position here from the list
-            temp.position = new Vector2(Random.Range(-10f, 10f), Random.Range(-5f, 5f)) ;   //random for testing
+            //temp.position = new Vector2(Random.Range(-10f, 10f), Random.Range(-5f, 5f)) ;   //random for testing
+            temp.GetComponent<ButtonScript>().DTime = data.DTime;
+            temp.position = data.buttons[it].position;
             //consider changing z value slightly to avoid overlapping
             temp.gameObject.SetActive(true);
         }

@@ -43,6 +43,7 @@ public class ScoreManager : MonoBehaviour {
     public void LoseMulti()
     {
         multi = 1;
+        multiTxt.UpdateText(multi + "");
     }
 	
     void UpdateScoreText()
